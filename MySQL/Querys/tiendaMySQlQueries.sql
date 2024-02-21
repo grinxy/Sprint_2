@@ -1,6 +1,6 @@
 /*1*/ SELECT nombre FROM producto;
 /*2*/ SELECT nombre, precio FROM producto;
-/*3*/ SELECT * FROM producto;
+/*3*/ SHOW COLUMNS FROM producto FROM tienda;
 /*4*/ SELECT nombre, precio, precio * 1.08 FROM producto;
 /*5*/ SELECT nombre as 'nombre de producto', precio as 'euros', precio * 1.08 as 'dolar Norte Americano' FROM producto;
 /*6*/ SELECT UPPER(nombre), precio FROM producto;
@@ -38,4 +38,4 @@
 /*38*/ SELECT producto.nombre FROM producto JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE fabricante.nombre ='Lenovo' ORDER BY precio DESC LIMIT 1;
 /*39*/ SELECT producto.nombre FROM producto JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE fabricante.nombre LIKE '%Hewlett%' ORDER BY precio ASC LIMIT 1;
 /*40*/ SELECT producto.nombre, producto.precio, fabricante.nombre FROM producto LEFT JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE producto.precio >= (SELECT MAX(precio) FROM producto JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE fabricante.nombre = 'Lenovo');
-
+/*41*/ SELECT * FROM producto LEFT JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE fabricante.nombre ='Asus' AND producto.precio >=(SELECT AVG(precio) FROM producto JOIN fabricante ON producto.codigo_fabricante = fabricante.codigo WHERE fabricante.nombre ='Asus');
